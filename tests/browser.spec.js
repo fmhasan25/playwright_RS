@@ -16,6 +16,8 @@ const page = await context.newPage();
 //Initialization- section
 const userName= page.locator('#username');
 const passWord = page.locator("[type=password]");
+const productName=page.locator('.card-body a');
+
 
 //Navigating browser: chromimum is inititated
 await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
@@ -39,8 +41,13 @@ await passWord.fill("learning");
 await page.locator('#signInBtn').click();
 
 //New page proof: capturing and printing the first content
-console.log(await page.locator(".card-body a").nth(0).textContent());
+console.log(await productName.nth(0).textContent());
+console.log(await productName.first().textContent());
+console.log(await productName.last().textContent());
+console.log(await productName.nth(3).textContent());
 
+const productsTitle = await productName.allTextContents();
+console.log(productsTitle);
 //find element CSS: #id, .class, [tag='attribute']
 
 })//End-test Browser context playwright test function

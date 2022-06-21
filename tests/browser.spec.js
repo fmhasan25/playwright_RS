@@ -9,30 +9,42 @@ const {test,expect}=require ('@playwright/test');
 test('Browser context Playwright test',async ({browser})=>
 {
 //browser instance
-
+//Creating context: contex holds page and add arguments
 const context = await browser.newContext();
 const page = await context.newPage();
+
+//Initialization- section
 const userName= page.locator('#username');
 const passWord = page.locator("[type=password]");
+
+//Navigating browser: chromimum is inititated
 await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+
+
 console.log(await page.title());
+
+//login function: negative testing with error capturing
 await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy")
 await userName.type('rahulshetty');
 await passWord.type("Learning");
 await page.locator('#signInBtn').click();
 console.log(await page.locator("[style*='block']").textContent());
 await expect(page.locator("[style*='block']")).toContainText('Incorrect username/password.');
+
+//login funciton: clearing and positive testing
 await userName.fill("");
 await userName.fill("rahulshettyacademy");
 await passWord.fill("");
 await passWord.fill("learning");
 await page.locator('#signInBtn').click();
-await console.log(await page.title());
 
+//New page proof: capturing and printing the first content
 console.log(await page.locator(".card-body a").nth(0).textContent());
-//find element CSS: 
 
-})
+//find element CSS: #id, .class, [tag='attribute']
+
+})//End-test Browser context playwright test function
+
 
 // test('page playwright test',async ({page})=>
 // {

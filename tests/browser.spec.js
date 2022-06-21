@@ -46,6 +46,8 @@ console.log(await productName.first().textContent());
 console.log(await productName.last().textContent());
 console.log(await productName.nth(3).textContent());
 
+//allTextContents() will not working when page is still loading
+//Therefore it'll be wised to use it right away
 const productsTitle = await productName.allTextContents();
 console.log(productsTitle);
 //find element CSS: #id, .class, [tag='attribute']

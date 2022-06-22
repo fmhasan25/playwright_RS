@@ -17,7 +17,7 @@ console.log(await products);
 
 })
 
-test.only('Guru99 bank login testing',async ({browser})=>
+test('Guru99 bank login testing',async ({browser})=>
 {
 const context1 = await browser.newContext();
 const page2 = await browser.newPage();

@@ -55,9 +55,22 @@ console.log(productsTitle);
 })//End-test Browser context playwright test function
 
 
-// test('page playwright test',async ({page})=>
-// {
-//     await page.goto("https://google.com");
-//     console.log(await page.title());
-//     await expect(page).toHaveTitle("Google");
-// })
+test.only('page playwright test',async ({page})=>
+{
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+    console.log(await page.title());
+    const userName= page.locator('#username');
+const passWord = page.locator("[type=password]");
+//login funciton: clearing and positive testing
+await userName.fill("");
+await userName.fill("rahulshettyacademy");
+await passWord.fill("");
+await passWord.fill("learning");
+const dropdown =await page.locator("select.form-control");
+await dropdown.selectOption('consult');
+await page.locator(".radiotextsty").first().click();
+await expect(page.locator(".radiotextsty").first()).toBeChecked();
+await page.pause();
+await page.locator('#signInBtn').click();
+})
+
